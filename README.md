@@ -17,7 +17,7 @@ Collection of data science projects, ranging between personal and educational an
 
 ***********************************************************
 
-[BBC Article Classification](https://github.com/ankushbharadwaj/Data-Science-Projects/tree/master/BBC%20Article%20Classification): Downloaded publically available [BBC news article datasets](http://mlg.ucd.ie/datasets/bbc.html) with the intention of deciding on a supervised learning algorithm that can most accurately categorize articles into either 'sport', 'business', 'tech', 'politics', or 'entertainment' when provided with the text of the article, along with gaining valuable insight into factors that differentiate news articles in these categories. 
+[BBC Article Classification](https://github.com/ankushbharadwaj/Data-Science-Projects/tree/master/BBC%20Article%20Classification): Downloaded publicly available [BBC news article datasets](http://mlg.ucd.ie/datasets/bbc.html) with the intention of deciding on a supervised learning algorithm that can most accurately categorize articles into either 'sport', 'business', 'tech', 'politics', or 'entertainment' when provided with the text of the article, along with gaining valuable insight into factors that differentiate news articles in these categories. 
 
 First, created a dataset with the following features: 'Filename', 'Content', 'Category' through readtext package in [RStudio](https://github.com/ankushbharadwaj/Data-Science-Projects/blob/master/BBC%20Article%20Classification/dataset_creation.R). 'Filename' is the name of the file that contains the news article being observed in that row, 'Content' is the un-parsed text of the news article, and 'Category' is which news category the article belongs to. 
 
