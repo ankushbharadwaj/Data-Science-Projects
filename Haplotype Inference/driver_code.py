@@ -31,6 +31,6 @@ masked_test = pd.read_csv("/Users/ankushbharadwaj/Desktop/assignment/test_data_m
 unmask_genotype(masked_test)
 if verify_unmasking(masked_test):
     haplotypes_test = get_haplotypes(masked_test)
-    np.savetxt("/Users/ankushbharadwaj/Desktop/assignment/test_data_sol.txt", haplotypes_1.values, fmt='%d')
+    np.savetxt("/Users/ankushbharadwaj/Desktop/assignment/test_data_sol.txt", haplotypes_test.values, fmt='%d')
 else:
     print("Error")
