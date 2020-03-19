@@ -18,8 +18,3 @@ The call to the function unmask_genotype(masked_test) is going to unmask the gen
 The following if-statement verifies that the unmasking occurred as planned. If this statement prints "Error", that means a value in the masked genotype matrix was not unmasked. 
 Assuming the unmasking proceded as planned, the haplotypes_test dataframe stores the haplotype matrix returned when the function get_haplotypes(masked_test) is run. 
 The next line saves the produced haplotype dataframe at a specified location as a text file. 
-
-
-
-
-    
