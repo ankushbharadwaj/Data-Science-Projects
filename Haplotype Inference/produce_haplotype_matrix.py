@@ -8,29 +8,27 @@ Created on Thu Mar 19 13:57:41 2020
 import numpy as np
 import pandas as pd
 
-def fill_in_heterozygous_haplotypes(haplotypes):
-    new_haplotypes = haplotypes
-    for row in range(len(haplotypes)):
-        for individual in range(len(haplotypes.iloc[row])):
-            if int(haplotypes.iloc[row][individual]) == -1:
-                if individual == 0:
-                    new_haplotypes.iloc[row][individual] = np.where(haplotypes.iloc[row] != -1)[0][0]
-                    if new_haplotypes.iloc[row][individual] == 1:
-                        new_haplotypes.iloc[row][individual+1] = 0
-                    else:
-                        new_haplotypes.iloc[row][individual+1] = 1
+def fill_in_heterozygous_haplotypes(hap_row):
+    for i in range(len(hap_row)):
+        if int(hap_row[i]) == -1:
+            if i == 0:
+                hap_row[i] = np.where(hap_row != 1)[0][0]
+                if hap_row[i] == 1:
+                    hap_row[i+1] == 0
                 else:
-                    closest_val_arr = np.where(haplotypes.iloc[row] != -1)[0]
-                    distances_away_arr = abs(closest_val_arr - individual)
-                    distances_away_val = min(abs(closest_val_arr - individual))
-                    closest_val_index = np.where(distances_away_arr == distances_away_val)[0][0]
-                    new_haplotypes.iloc[row][individual] = haplotypes.iloc[row][closest_val_index]
-                    if new_haplotypes.iloc[row][individual] == 1:
-                        new_haplotypes.iloc[row][individual+1] = 0
-                    else:
-                        new_haplotypes.iloc[row][individual+1] = 1
-                individual = individual + 1
-    return(new_haplotypes)
+                    hap_row[i+1] == 1
+            else:
+                closest_val_arr = np.where(hap_row != -1)[0]
+                distances_away_arr = abs(closest_val_arr - i)
+                distances_away_val = min(abs(closest_val_arr - i))
+                closest_val_index = np.where(distances_away_arr == distances_away_val)[0][0]
+                hap_row[i] = hap_row[closest_val_index]
+                if hap_row[i] == 1:
+                    hap_row[i+1] = 0
+                else:
+                    hap_row[i+1] = 1
+            i = i + 1
+    return
     
 def get_haplotypes(unmasked):
     haplotypes = pd.DataFrame(index = range(len(unmasked)), columns = range(2*unmasked.shape[1]))
@@ -47,5 +45,6 @@ def get_haplotypes(unmasked):
                 array_for_current_row.append(-1)
                 array_for_current_row.append(-1)
         haplotypes.iloc[row] = array_for_current_row
-    haplotypes = fill_in_heterozygous_haplotypes(haplotypes)
+        if -1 in haplotypes.iloc[row].value_counts():
+            fill_in_heterozygous_haplotypes(haplotypes.iloc[row])
     return(haplotypes)
