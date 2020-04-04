@@ -1,0 +1,127 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+#install.packages('ggplot2')
+#install.packages('ggpubr')
+#install.packages('vcd')
+library(vcd)
+library(ggplot2)
+library(ggpubr)
+```
+```{r}
+#assault
+race_sev_assault <- read.csv('/Users/ankushbharadwaj/Desktop/DSUxDIPD\ 2020/race_sev_assault.csv')
+temp <- race_sev_assault[,-1]
+rownames(temp) <- race_sev_assault[,1]
+race_sev_assault<- temp
+print(race_sev_assault)
+
+ggballoonplot(race_sev_assault, fill = "value",main="Punishment Severity for Assault", xlab="Punishment Severity", ylab = "Perpetrator Race")+scale_fill_viridis_c(option = "D")+theme_gray()
+```
+
+```{r}
+par(las=2)
+mosaicplot(race_sev_assault, main="Punishment Severity for Assault", ylab="Punishment Severity", xlab = "Perpetrator Race", color = c("Yellow 2", "Orchid 4", "Cadet Blue 4", "Pale Green 4"))
+```
+
+
+```{r}
+#drugs
+race_sev_drugs <- read.csv('/Users/ankushbharadwaj/Desktop/DSUxDIPD\ 2020/race_sev_drugs.csv')
+temp <- race_sev_drugs[,-1]
+rownames(temp) <- race_sev_drugs[,1]
+race_sev_drugs<- temp
+print(race_sev_drugs)
+
+ggballoonplot(race_sev_drugs, fill = "value",main="Punishment Severity for Dangerous Drugs", xlab="Punishment Severity", ylab = "Perpetrator Race")+scale_fill_viridis_c(option = "D")+theme_gray()
+```
+```{r}
+par(las=2)
+mosaicplot(race_sev_drugs, main="Punishment Severity for Dangerous Drugs", ylab="Punishment Severity", xlab = "Perpetrator Race", color = c("Yellow 2", "Orchid 4", "Cadet Blue 4", "Pale Green 4"))
+```
+
+
+```{r}
+#mischief, 
+race_sev_mischief <- read.csv('/Users/ankushbharadwaj/Desktop/DSUxDIPD\ 2020/race_sev_mischief.csv')
+temp <- race_sev_mischief[,-1]
+rownames(temp) <- race_sev_mischief[,1]
+race_sev_mischief<- temp
+print(race_sev_mischief)
+
+ggballoonplot(race_sev_mischief, fill = "value",main="Punishment Severity for Criminal Mischief", xlab="Punishment Severity", ylab = "Perpetrator Race")+scale_fill_viridis_c(option = "D")+theme_gray()
+```
+```{r}
+par(las=2)
+mosaicplot(race_sev_mischief, main="Punishment Severity for Criminal Mischief", ylab="Punishment Severity", xlab = "Perpetrator Race", color = c("Yellow 2", "Orchid 4", "Cadet Blue 4", "Pale Green 4"))
+```
+
+```{r}
+#weapons
+race_sev_weapons <- read.csv('/Users/ankushbharadwaj/Desktop/DSUxDIPD\ 2020/race_sev_weapons.csv')
+temp <- race_sev_weapons[,-1]
+rownames(temp) <- race_sev_weapons[,1]
+race_sev_weapons<- temp
+print(race_sev_weapons)
+
+ggballoonplot(race_sev_weapons, fill = "value",main="Punishment Severity for Dangerous Weapons", xlab="Punishment Severity", ylab = "Perpetrator Race")+scale_fill_viridis_c(option = "D")+theme_gray()
+```
+```{r}
+par(las=2)
+mosaicplot(race_sev_weapons, main="Punishment Severity for Dangerous Weapons", ylab="Punishment Severity", xlab = "Perpetrator Race", color = c("Yellow 2", "Orchid 4", "Cadet Blue 4", "Pale Green 4"))
+```
+
+```{r}
+#sex
+race_sev_sex <- read.csv('/Users/ankushbharadwaj/Desktop/DSUxDIPD\ 2020/race_sev_sex.csv')
+temp <- race_sev_sex[,-1]
+rownames(temp) <- race_sev_sex[,1]
+race_sev_sex<- temp
+print(race_sev_sex)
+
+ggballoonplot(race_sev_sex, fill = "value",main="Punishment Severity for Sex Crimes", xlab="Punishment Severity", ylab = "Perpetrator Race")+scale_fill_viridis_c(option = "D")+theme_gray()
+```
+```{r}
+par(las=2)
+mosaicplot(race_sev_sex, main="Punishment Severity for Sex Crimes", ylab="Punishment Severity", xlab = "Perpetrator Race", color = c("Yellow 2", "Orchid 4", "Cadet Blue 4", "Pale Green 4"))
+```
+
+
+```{r}
+#welfare
+race_sev_welfare <- read.csv('/Users/ankushbharadwaj/Desktop/DSUxDIPD\ 2020/race_sev_welfare.csv')
+temp <- race_sev_welfare[,-1]
+rownames(temp) <- race_sev_welfare[,1]
+race_sev_welfare<- temp
+print(race_sev_welfare)
+
+ggballoonplot(race_sev_welfare, fill = "value",main="Punishment Severity for Endan Welfare Incomp", xlab="Punishment Severity", ylab = "Perpetrator Race")+scale_fill_viridis_c(option = "D")+theme_gray()
+```
+```{r}
+par(las=2)
+mosaicplot(race_sev_welfare, main="Punishment Severity for Endan Welfare Incomp", ylab="Punishment Severity", xlab = "Perpetrator Race", color = c("Yellow 2", "Orchid 4", "Cadet Blue 4", "Pale Green 4"))
+```
+
+
+```{r}
+#overall offenses
+ofns_sev <- read.csv('/Users/ankushbharadwaj/Desktop/DSUxDIPD\ 2020/ofns_sevdf.csv')
+temp <- ofns_sev[,-1]
+rownames(temp) <- ofns_sev[,1]
+ofns_sev<- temp
+
+ofns_sev <- ofns_sev[c(2,3,4,5,17),]
+print(ofns_sev)
+
+ggballoonplot(ofns_sev, fill = "value",main="Punishment Severity for Specific Offenses", xlab="Punishment Severity", ylab = "Offense")+scale_fill_viridis_c(option = "D")+theme_gray()
+```
+
+```{r}
+par(las=2)
+mosaicplot(ofns_sev, main="Punishment Severity for Specific Offenses", ylab="Punishment Severity", xlab = "Offense", color = c("Yellow 2", "Cadet Blue 4", "Orchid 4","Pale Green 4"))
+```
+
